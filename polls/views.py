@@ -1,14 +1,16 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import (
 ListView,
 DetailView,
 CreateView,
+TemplateView
 )
 from django.utils import timezone
 
 from .models import Question, Choice, Suggestion
+from .forms import SuggestionForm
 
 class IndexView(ListView):
     template_name = 'polls/index.html'
@@ -28,17 +30,43 @@ class ResultsView(DetailView):
 
 class SuggestionView(CreateView):
     model = Suggestion
-    fields = ['name', 'suggestion']
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
+    fields = ('name', 'suggestion')
+
+class SuggestionView(TemplateView):
+    template_name = 'polls/suggestion_form.html'
+    def get(self, request):
+        form = SuggestionForm
+        suggestions = Suggestion.objects.all()
+        args = {'form': form, 'suggestions': suggestions}
+
+        return render(request, self.template_name, args)
+
+
+    def post(self, request):
+        form = SuggestionForm(request.POST)
+        if form.is_valid():
+            suggestion = form.save(commit=False)
+            suggestion.save()
+            text = form.cleaned_data['suggestion']
+            form = SuggestionForm
+            args = {'form': form, 'text': text}
+        return HttpResponseRedirect('/polls/suggestions/list')
 
 class ListView(ListView):
     model = Suggestion
     template_name = 'polls/suggestion_list.html'
     context_object_name = 'suggestions'
 
+    def get(self, request):
+        form = SuggestionForm
+        suggestions = Suggestion.objects.all()
+        args = {'form': form, 'suggestions': suggestions}
 
+        return render(request, self.template_name, args)
+
+
+
+"""
 def list(request):
     try:
         suggestions = {
@@ -52,7 +80,7 @@ def list(request):
         return render(request, 'polls/suggestion_form.html', {'error_message': "You didn't make a suggestion.", })
     else:
         return HttpResponseRedirect(reverse('polls:list'),context)
-
+"""
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)

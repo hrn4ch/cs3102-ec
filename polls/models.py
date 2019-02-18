@@ -27,9 +27,9 @@ class Choice(models.Model):
 
 class Suggestion(models.Model):
     name = models.CharField(max_length=50)
-    suggestion = models.TextField()
+    suggestion = models.CharField(max_length=500)
     def __str__(self):
-        return self.text
+        return self.suggestion
 
     def get_absolute_url(self):
         return reverse('polls:list', kwargs={'pk': self.pk})
