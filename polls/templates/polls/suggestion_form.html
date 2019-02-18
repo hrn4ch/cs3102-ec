@@ -1,0 +1,14 @@
+{% extends "polls/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form action="{% url 'polls:new-suggestion' %}" method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" class="btn btn-success" > Submit Suggestion</input>
+</form>
+
+
+{% endblock content %}
