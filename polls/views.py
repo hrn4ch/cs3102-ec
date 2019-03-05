@@ -28,30 +28,30 @@ class ResultsView(DetailView):
     model = Question
     template_name = 'polls/results.html'
 
-class SuggestionView(CreateView):
-    model = Suggestion
-    fields = ('name', 'suggestion')
-
-class SuggestionView(TemplateView):
-    template_name = 'polls/suggestion_form.html'
-    def get(self, request):
-        form = SuggestionForm
-        suggestions = Suggestion.objects.all()
-        args = {'form': form, 'suggestions': suggestions}
-
-        return render(request, self.template_name, args)
-
-
-    def post(self, request):
+def suggest(request):
+    if request.method == "POST":
         form = SuggestionForm(request.POST)
         if form.is_valid():
-            suggestion = form.save(commit=False)
-            suggestion.save()
-            text = form.cleaned_data['suggestion']
-            form = SuggestionForm
-            args = {'form': form, 'text': text}
-        return HttpResponseRedirect('/polls/suggestions/list')
+            form.save()
+            return redirect("polls:list")
+    else:
+        form = SuggestionForm()
+    link = "polls/suggestion_form.html"
+    context = {
+        'form':form,
+    }
+    return render(request, link, context)
 
+
+def list_suggestions(request):
+    suggestions = Suggestion.objects.all()
+    link = "polls/suggestion_list.html"
+    context = {
+        'suggestions': suggestions,
+    }
+    return render(request, link, context)
+
+"""
 class ListView(ListView):
     model = Suggestion
     template_name = 'polls/suggestion_list.html'
@@ -66,7 +66,7 @@ class ListView(ListView):
 
 
 
-"""
+
 def list(request):
     try:
         suggestions = {

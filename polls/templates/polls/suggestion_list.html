@@ -1,13 +1,11 @@
 {% extends "polls/base.html" %}
+
 {% block content %}
-{% if object.author == user %}
-    <ul>
-        {% for suggestion in suggestions %}
-        <li>{{ object.name }} -- {{ object.suggestion }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No suggestions are available.</p>
-{% endif %}
-<a href="{% url 'polls:suggestions' question.id %}">Anything else?</a>
-{% endblock content %}
+<a href="{% url 'polls:suggestions' %}">Anything else?</a>
+<br>
+{% for i in suggestions %}
+<li>{{ suggestion.name }} -- {{ suggestion.suggestion }}</li>
+<hr>
+{% endfor %}
+
+{% endblock %}

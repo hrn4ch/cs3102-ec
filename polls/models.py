@@ -30,9 +30,3 @@ class Suggestion(models.Model):
     suggestion = models.CharField(max_length=500)
     def __str__(self):
         return self.suggestion
-
-    def get_absolute_url(self):
-        return reverse('polls:list', kwargs={'pk': self.pk})
-
-
-
