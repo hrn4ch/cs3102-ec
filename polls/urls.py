@@ -10,7 +10,7 @@ urlpatterns = [
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
     path('<int:question_id>/vote/', views.vote, name='vote'),
-    url(r'^suggestions/', views.suggest, name='suggestions'),
-    url(r'^suggestions/list/', views.list_suggestions, name='list')
+    path('suggestions/', views.suggest, name='suggestions'),
+    path('suggestions/list/', views.list_suggestions, name='list')
 
 ]

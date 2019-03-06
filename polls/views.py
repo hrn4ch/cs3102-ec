@@ -38,7 +38,7 @@ def suggest(request):
         form = SuggestionForm()
     link = "polls/suggestion_form.html"
     context = {
-        'form':form,
+        'form': form,
     }
     return render(request, link, context)
 
@@ -53,14 +53,12 @@ def list_suggestions(request):
 
 """
 class ListView(ListView):
-    model = Suggestion
     template_name = 'polls/suggestion_list.html'
-    context_object_name = 'suggestions'
 
     def get(self, request):
         form = SuggestionForm
         suggestions = Suggestion.objects.all()
-        args = {'form': form, 'suggestions': suggestions}
+        args = {'form': form, 'suggestions': suggestions, }
 
         return render(request, self.template_name, args)
 

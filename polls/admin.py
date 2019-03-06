@@ -17,4 +17,13 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter = ['pub_date']
     search_fields = ['question_text']
 
+class SuggestionAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None, {'fields': ['name']}),
+        (None, {'fields': ['suggestion']}),
+    ]
+    list_display = ('name','suggestion')
+
+admin.site.register(Suggestion, SuggestionAdmin)
+
 admin.site.register(Question, QuestionAdmin)

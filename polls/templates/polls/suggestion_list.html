@@ -1,11 +1,9 @@
 {% extends "polls/base.html" %}
 
 {% block content %}
-<a href="{% url 'polls:suggestions' %}">Anything else?</a>
-<br>
-{% for i in suggestions %}
-<li>{{ suggestion.name }} -- {{ suggestion.suggestion }}</li>
-<hr>
-{% endfor %}
 
+{% for i in suggestions %}
+<li>{{ i.name }} -- {{ i.suggestion }}</li>
+{% endfor %}
+<a href="{% url 'polls:suggestions' %}">Anything else?</a>
 {% endblock %}
