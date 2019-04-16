@@ -1,14 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 {% load static %}
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
-{% if latest_question_list %}
-    <ul>
-        {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}
-        </a></li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+<style>
+
+</style>
+
+<title>CS 3102 Concept Review</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+        <a class="navbar-brand" href="/">UVA CS3102</a>
+    <a class="nav-link " href="/topics/">Topics</a>
+</nav>
+<main role="main">
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3">CS 3102 Topics</h1>
+        <p>This course addresses the main fields of study within the Theory of Computation, ranging from Automata Theory
+        to Computability Theory to Computational Complexity Theory! Discover more about each of these topics below!</p>
+    </div>
+</div>
+
+<div class="container">
+<div class="card-group">
+    {% for topic in topics %}
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+    <div class="col-md-4">
+        <img class="topicpic" style="width:100%" src="https://increasify.com.au/wp-content/uploads/2016/08/default-image.png">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ topic.title }}</h5>
+        <p class="card-text">{{ topic.desc }}</p>
+      </div>
+        <div class="card-body">
+          <a href="{% url 'polls:post' topic.title%}" class="btn btn-primary">Learn More!</a>
+       </div>
+    </div>
+  </div>
+    </div>
+  {% endfor %}
+
+  </div>
+    </div>
+</div>
+</div>
+    </main>
+
+<footer class="bd-footer text-muted">
+    <div class="container-fluid p-3 p-md-5">
+    <p>Made with Bootstrap</p>
+    </div>
+    </footer>
+</body>
+</html>

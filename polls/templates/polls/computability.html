@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<style>
+#navbar-scrollspy {
+    justify-content: left;
+}
+
+#text-content {
+    justify-content: left;
+    margin-left: 35%;
+}
+.sidenav {
+    position: fixed;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Computability Theory</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+        <a class="navbar-brand" href="/">UVA CS3102</a>
+    <a class="nav-link " href="/topics/">Topics</a>
+</nav>
+<main role="main">
+
+<div class="col-4 sidenav">
+    <nav id="navbar-scrollspy" class="navbar navbar-light bg-light">
+  <nav class="nav nav-pills flex-column">
+    <a class="nav-link" href="#item-1">1. Introduction</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ml-3 my-1" href="#item-1-1">1-1. What does it mean to be countable?</a>
+      <a class="nav-link ml-3 my-1" href="#item-1-2">1-2. Why is this important?</a>
+    </nav>
+    <a class="nav-link" href="#item-2">2. Methods</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ml-3 my-1" href="#item-2-1">2-1. Finding a bijection</a>
+      <a class="nav-link ml-3 my-1" href="#item-2-2">2-2. Diagonalization</a>
+    </nav>
+    <a class="nav-link" href="#item-3">3. Practice</a>
+  </nav>
+</nav>
+</div>
+
+<div id="text-content" class="col-5">
+<div data-spy="scroll" data-target="#navbar-scrollspy" data-offset="0">
+
+<div class="container">
+      <h1>Computability</h1>
+</div>
+  <h3 id="item-1">Introduction</h3>
+  <p>
+      Many things are important about this ...
+
+  </p>
+  <h5 id="item-1-1">What Does It Mean For A Set To Be Countable?</h5>
+  <p>...</p>
+      <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+
+
+  <h5 id="item-1-2">Why Is It Important To Know If A Set Is Countable?</h5>
+  <p>...</p>
+      <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+
+  <h3 id="item-2">Methods For Determining Countability</h3>
+  <p>...</p>
+      <p>...</p>
+  <p>...</p>
+  <p>...</p>
+
+  <h5 id="item-2-1">Finding A Bijection With The Natural Numbers</h5>
+  <p>...</p>
+      <p>...</p>
+  <p>...</p>
+  <p>...</p>
+  <p>...</p>
+
+  <h5 id="item-2-2">Diagonalization</h5>
+  <p>...</p>
+
+  <h3 id="item-3">Practice Problems</h3>
+
+</div>
+</div>
+
+
+</main>
+</body>
+</html>

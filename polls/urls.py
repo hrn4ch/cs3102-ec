@@ -6,11 +6,7 @@ from . import views
 app_name = 'polls'
 
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
-    path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
-    path('<int:question_id>/vote/', views.vote, name='vote'),
-    path('suggestions/', views.suggest, name='suggestions'),
-    path('suggestions/list/', views.list_suggestions, name='list')
-
+    url(r'^$', views.LoginView.as_view(), name='homepage'),
+    url(r'^topics/$', views.list_topics, name="topics"),
+    url(r'^topics/(?P<topic_title>.+)/$', views.post_topic, name="post"),
 ]
