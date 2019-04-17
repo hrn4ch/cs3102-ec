@@ -3,8 +3,8 @@
 <head>
 
 {% load static %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
 <style>
 #navbar-scrollspy {
@@ -18,17 +18,23 @@
 .sidenav {
     position: fixed;
 }
+body {
+    background-color: #F8F9FB;
+}
+.equation {
+    text-align: center;
+}
 </style>
     <meta charset="UTF-8">
     <title>Countability Theory</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-light sticky-top">
         <a class="navbar-brand" href="/">UVA CS3102</a>
     <a class="nav-link " href="/topics/">Topics</a>
 </nav>
-<main role="main">
+<p role="main">
 
 <div class="col-4 sidenav">
     <nav id="navbar-scrollspy" class="navbar navbar-light bg-light">
@@ -56,38 +62,114 @@
 </div>
   <h3 id="item-1">Introduction</h3>
   <p>
-      Many things are important about this ...
-
+      It is important to set up the background information necessary to begin understanding countability.
+      When we say two sets are of the same size, we are saying they have the same <mark>cardinality</mark>.
+      Sets can either hold a finite or infinite number of items, therefore, this cardinality may also be infinite or
+      finite. Two sets can be related together by a <mark>function</mark> which can take an item from one set and
+      return an item from the other depending on the regulations of this function.
   </p>
-  <h5 id="item-1-1">What Does It Mean For A Set To Be Countable?</h5>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
 
+    <p>Assume we have a function, <var>f</var>, for two sets, <var>C</var> and <var>D</var> such that: </p>
+
+<dl class="row">
+  <dt class="col-sm-3"><var>f</var> : <var>C</var> <i class="fas fa-long-arrow-alt-right"></i> <var>D</var></dt>
+  <dd class="col-sm-9">
+    <dl class="row">
+      <dt class="col-sm-4">1-1, Injective</dt>
+      <dd class="col-sm-8">
+          <ul>
+            <li>every element in the codomain is mapped to by at most one element in the domain</li>
+            <li>no item in <var>D</var> is mapped to by two items in <var>C</var></li>
+            <li>|<var>C</var>| <i class="fas fa-less-than-equal"></i> |<var>D</var>|</li>
+          </ul></dd>
+        <dt class="col-sm-4">Onto, Surjective</dt>
+      <dd class="col-sm-8">
+          <ul>
+            <li>every element in the codomain is mapped to by at least one element in the domain</li>
+            <li>every item in <var>D</var> is mapped to by at least one item in <var>C</var></li>
+            <li>|<var>C</var>| <i class="fas fa-greater-than-equal"></i> |<var>D</var>|</li>
+          </ul></dd>
+    </dl>
+</dd>
+  <dt class="col-sm-3"><var>f</var> : <var>C</var> <i class="fas fa-arrows-alt-h"></i> <var>D</var></dt>
+  <dl class="col-sm-9">
+<dl class="row">
+      <dt class="col-sm-4">Bijective</dt>
+      <dd class="col-sm-8">
+          <ul>
+            <li>both injective and surjective</li>
+            <li>every item in <var>D<var> is mapped to by exactly 1 item in <var>C<var> and vice versa</li>
+            <li>|<var>C</var>| <i class="fas fa-equals"></i> |<var>D</var>|</li>
+          </ul>
+      </dd>
+  </dl>
+</dl>
+  </dl>
+
+    <p>The <mark>Pigeonhole Principle</mark> is when you have two sets, <var>S</var> and <var>T</var>, and a function,
+        <var>f</var>, as follows:</p>
+
+    <p class="text-center"><var>f</var> : <var>S</var> <i class="fas fa-long-arrow-alt-right"></i> <var>T</var></p>
+
+    <p>If |<var>S</var>| <i class="fas fa-greater-than"></i> |<var>T</var>|, than <var>f</var> cannot be 1-1.
+        This is because there are too many <em>pigeons</em> but not enough <em>pigeonholes</em>. There must be at least
+        one hole (in <var>T</var>) shared by 2 pigeons (from <var>S</var>).</p>
+
+  <h5 id="item-1-1">What Does It Mean For A Set To Be Countable?</h5>
+  <p>A set is countable if:
+        <ul>
+        <li>It is finite</li>
+        <li>It has a bijection with the natural numbers (that means it is countably infinite)</li>
+        <li>It is a subset of a countable set</li>
+        </ul>
+    </p>
 
   <h5 id="item-1-2">Why Is It Important To Know If A Set Is Countable?</h5>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
+
+
+  <p>For anything to be computable by Java (or any other Turing-complete computing language) the set of
+      possibilities must be countable. This means that the Java program must have a countable number of acceptable
+      values in order to decide whether or not an inputted value is accepted.
+</p>
+  <p>
+      Therefore, for us to code and use deciders within computer science, we have to be able to determine whether the
+      acceptable items would be countable. Now, let’s look into how we determine whether or not a set is countable.
+  </p>
 
   <h3 id="item-2">Methods For Determining Countability</h3>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
+  <p>If a set is known to be finite, we can conclude that it is a countable set. When a set is infinite, however, this
+      must be proven a bit further. It is possible for infinite sets to be countable, like the natural numbers, &#8469,
+      for example, but it is also possible for infinite sets to be uncountable, like all real numbers, &#8477.</p>
+
+<p>Through finding a bijection, we are able to prove that there does exist a bijective function that maps the given set
+    to the natural numbers. Through diagonalization, we are able to prove that there exists no possible bijection
+    between the given set and the natural numbers.</p>
+
+<p>TL;DR:
+    <ul>
+    <li>proving an infinite set is countable <i class="far fa-hand-point-right"></i> find a bijection with &#8469</li>
+    <li>proving an infinite set is <em>not</em> countable <i class="far fa-hand-point-right"></i> diagonalization</li>
+    </ul>
+</p>
 
   <h5 id="item-2-1">Finding A Bijection With The Natural Numbers</h5>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-
+    <p>Finding a bijection is not always easy. Sometimes it is obvious, and sometimes it can be way more complicated.
+    The goal of finding a bijection is making sure everything in the natural numbers can map both to and from an
+    element of the set your looking at. If I am looking at a set like the set of all even numbers, it might be easier
+    to just say multiply each natural number by 2 and you’ll get something in the set of even numbers. However, if you
+    have the set of rational numbers, or the set of all possible strings over an alphabet, this is not the route you’d
+    want to take.</p>
+    <p>
+    <button button type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#evenNumbers"
+            aria-expanded="true" aria-controls="evenNumbers">Find A Function</button></p>
+<div class="row">
+<div class="collapse" id="evenNumbers">
+  <div class="card card-body">
+<p> If <var>S</var> is the set of even natural numbers, then: </p>
+    <p class="text-center"><var>f</var> : <var>&#8469</var> <i class="fas fa-arrows-alt-h"></i> <var>S</var></p>
+  </div>
+</div>
+</div>
   <h5 id="item-2-2">Diagonalization</h5>
   <p>...</p>
 

@@ -4,7 +4,6 @@
 
 {% load static %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
 <style>
 #navbar-scrollspy {
@@ -18,13 +17,16 @@
 .sidenav {
     position: fixed;
 }
+body {
+    background-color: #F8F9FB;
+}
 </style>
     <meta charset="UTF-8">
     <title>Automata Theory</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-light sticky-top">
         <a class="navbar-brand" href="/">UVA CS3102</a>
     <a class="nav-link " href="/topics/">Topics</a>
 </nav>
@@ -53,7 +55,7 @@
 </div>
 
 <div id="text-content" class="col-5">
-<div data-spy="scroll" data-target="#navbar-scrollspy" data-offset="0">
+<div data-spy="scroll" data-target="#navbar-scrollspy" data-offset="1000">
 
 <div class="container">
       <h1>Finite State Automatons</h1>

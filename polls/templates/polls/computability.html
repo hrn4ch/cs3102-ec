@@ -4,7 +4,6 @@
 
 {% load static %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
 <style>
 #navbar-scrollspy {
@@ -18,13 +17,16 @@
 .sidenav {
     position: fixed;
 }
+body {
+    background-color: #F8F9FB;
+}
 </style>
     <meta charset="UTF-8">
     <title>Computability Theory</title>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-light sticky-top">
         <a class="navbar-brand" href="/">UVA CS3102</a>
     <a class="nav-link " href="/topics/">Topics</a>
 </nav>
@@ -60,8 +62,14 @@
 
   </p>
   <h5 id="item-1-1">What Does It Mean For A Set To Be Countable?</h5>
-  <p>...</p>
-      <p>...</p>
+  <p>A set is countable if:
+        <ul>
+        <li>It is finite</li>
+        <li>It has a bijection with the natural numbers (that means it is countably infinite)</li>
+        <li>It is a subset of a countable set</li>
+        </ul>
+    </p>
+      <p>A bijection is when there exists a function for two sets, <var>f</var> and <var>g</var> such that:</p>
   <p>...</p>
   <p>...</p>
   <p>...</p>
