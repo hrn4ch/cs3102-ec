@@ -6,7 +6,29 @@
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
 <style>
-
+var allTopics = [
+  {
+    "model": "polls.topic",
+    "title": "Automaton Theory",
+    "desc": "What's an automaton, and what can they do? What are they relevant to computer science?",
+    "image": "media/default-thumbnail.html",
+    "postURL": "polls/automata_theory.html",
+  },
+  {
+    "model": "polls.topic",
+    "title": "Countability",
+    "desc": "What makes things countable and others not? Why is this even relevant to computers?",
+    "image": "media/default-thumbnail.html",
+    "postURL": "polls/countability.html",
+  },
+  {
+    "model": "polls.topic",
+    "title": "Computability Theory",
+    "desc": "What does it mean to be computable? How would we even know what is and isn't computable?",
+    "image": "media/default-thumbnail.html",
+    "postURL": "polls/computability.html",
+  },
+]
 </style>
 
 <title>CS 3102 Concept Review</title>
