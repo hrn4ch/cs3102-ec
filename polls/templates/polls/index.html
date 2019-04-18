@@ -2,33 +2,41 @@
 <html lang="en">
 <head>
 {% load static %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="{% static 'polls/styles.css' %}">
 
 <style>
-var allTopics = [
-  {
-    "model": "polls.topic",
-    "title": "Automaton Theory",
-    "desc": "What's an automaton, and what can they do? What are they relevant to computer science?",
-    "image": "media/default-thumbnail.html",
-    "postURL": "polls/automata_theory.html",
-  },
-  {
-    "model": "polls.topic",
-    "title": "Countability",
-    "desc": "What makes things countable and others not? Why is this even relevant to computers?",
-    "image": "media/default-thumbnail.html",
-    "postURL": "polls/countability.html",
-  },
-  {
-    "model": "polls.topic",
-    "title": "Computability Theory",
-    "desc": "What does it mean to be computable? How would we even know what is and isn't computable?",
-    "image": "media/default-thumbnail.html",
-    "postURL": "polls/computability.html",
-  },
-]
+body {
+    background-color: #F8F9FB;
+}
+.jumbotron {
+    height: 400px;
+}
+.featurette-divider {
+  margin: 5rem 0;
+}
+.title-subtext {
+    font-weight: 300;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.about .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.about h2 {
+  font-weight: 400;
+}
+.about .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+.centered {
+    text-align: center;
+}
+.bottom {
+    margin-top: 151px;
+}
 </style>
 
 <title>CS 3102 Concept Review</title>
@@ -38,32 +46,37 @@ var allTopics = [
 
 <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
         <a class="navbar-brand" href="/">UVA CS3102</a>
-    <a class="nav-link " href="/topics/">Topics</a>
+    <a class="nav-link text-light" href="/topics/">Topics</a>
 </nav>
 <main role="main">
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-3">CS 3102 Topics</h1>
-        <p>This course addresses the main fields of study within the Theory of Computation, ranging from Automata Theory
-        to Computability Theory to Computational Complexity Theory! Discover more about each of these topics below!</p>
+        <h3 class="title-subtext">This course addresses the main fields of study within the Theory of Computation, ranging from Automata Theory
+        to Computability Theory to Computational Complexity Theory! Discover more about each of these topics below!</h3>
+    </div>
+    <div class="centered bottom">
+        <i class="fas fa-chevron-down fa-3x"></i>
     </div>
 </div>
 
-<div class="container">
-<div class="card-group">
+
+<div class="container about">
+    <hr class="featurette-divider">
+<div class="card-group text-dark">
     {% for topic in topics %}
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card bg-light mb-3" style="max-width: 540px;">
         <div class="row no-gutters">
     <div class="col-md-4">
 
     </div>
     <div class="col-md-8">
-      <div class="card-body">
+      <div class="card-body text-dark">
         <h5 class="card-title">{{ topic.title }}</h5>
         <p class="card-text">{{ topic.desc }}</p>
       </div>
-        <div class="card-body">
-          <a href="{% url 'polls:post' topic.title%}" class="btn btn-primary">Learn More!</a>
+        <div class="card-body text-dark">
+          <a href="{% url 'polls:post' topic.title%}" class="btn btn-dark">Learn More!</a>
        </div>
     </div>
   </div>
@@ -78,7 +91,7 @@ var allTopics = [
 
 <footer class="bd-footer text-muted">
     <div class="container-fluid p-3 p-md-5">
-    <p>Made with Bootstrap</p>
+    <p class="text-muted"><i class="far fa-copyright"></i> Hana Nur, 2019</p>
     </div>
     </footer>
 </body>

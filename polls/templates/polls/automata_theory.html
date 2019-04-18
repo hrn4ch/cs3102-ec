@@ -58,20 +58,49 @@ body {
 <div data-spy="scroll" data-target="#navbar-scrollspy" data-offset="1000">
 
 <div class="container">
-      <h1>Finite State Automatons</h1>
+      <h1>Finite State Automatons (FSAs)</h1>
 </div>
   <h3 id="item-1">Introduction to FSAs</h3>
-  <p>
-      Many things are important about this ...
 
+  <p>
+      FSAs are a simple model of computation that represent computers without any memory. FSAs
+      work as <mark>deciders</mark>, which are computing machines, programs, or algorithms that are general enough to
+      describe any computation. These deciders are independent of any specifics of construction and enable discussion
+      of the limits of computability.
   </p>
-  <h5 id="item-1-1">Deterministic Finite Automaton</h5>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
+    <p>
+        Sets of strings in computer science are called a <mark>formal language</mark>. Strings are a sequence of
+        characters, and the set of characters available to form these strings is called an <mark>alphabet</mark>. We use
+         FSAs to determine whether or not strings are accepted into languages.
+    </p>
+    <p>
+        FSAs read strings character by character, and each character puts the automaton into a new state. State
+        transition rules depend only on current state and currently-read characters, so you can't look back at previous
+        characters or states, and there are a finite number of states (hence the name FSA).
+    </p>
+
+
+  <h5 id="item-1-1">Deterministic Finite Automatons (DFAs)</h5>
+  <p>DFAs are FSAs with specific requirements:
+  <ul class="list-unstyled">
+    <li>1. Each state must have a transition for every possible inputted character</li>
+    <li>2. The FSA can only be in one state at a time</li>
+</ul>
+    To be <mark>closed</mark> under a property means that applying this property to a member of a set returns another
+    member of the set. DFAs are closed under many different properties:
+    <ul>
+        <li><strong>Complement</strong>: FSA that accepts all strings <em>not</em> in the language</li>
+        <li><strong>Intersection</strong>: Intersection of 2 FSAs accepts only members in both sets</li>
+        <li><strong>Union</strong>: Union of 2 FSAs accepts any members in either set</li>
+        <li><strong>Difference</strong>: Difference between 2 FSAs accepts only members in first set that are not in the
+            second set</li>
+        <li><strong>Concatenation</strong>: FSA that accepts strings with one string from first set concatenated with one
+            string from the second set</li>
+        <li><strong>Reversal</strong>: FSA that accepts all strings from the language with characters in the reverse
+             order</li>
+
+    </ul>
+  </p>
 
 
   <h5 id="item-1-2">Nondeterministic Finite Automaton</h5>
@@ -84,17 +113,12 @@ body {
   <p>...</p>
 
   <h3 id="item-2">Regular Languages</h3>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
+  <p>
+      The set of all languages decided by some FSA is called the Regular languages.
+  </p>
 
   <h5 id="item-2-1">Regular Expressions</h5>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
+
 
   <h3 id="item-3">Pushdown Automaton</h3>
       <p>...</p>

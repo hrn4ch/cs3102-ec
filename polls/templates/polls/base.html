@@ -10,7 +10,40 @@ body {
     background-color: #F8F9FB;
 }
 .jumbotron {
-    height: 512px;
+    height: 400px;
+}
+.margin-above{
+    margin-top: 60px;
+}
+.about .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.about h2 {
+  font-weight: 400;
+}
+.about .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+.featurette-divider {
+  margin: 5rem 0;
+}
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+.title-subtext {
+    font-weight: 300;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.centered {
+    text-align: center;
+}
+.bottom {
+    margin-top: 76px;
 }
 </style>
 
@@ -27,13 +60,47 @@ body {
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-3" id="homepage-title">Welcome to CS 3102!</h1>
-        <p>This web application provides information surrounding a variety of topics within the course. Click the link below
-            to discover all that this course has to offer!</p>
-        <p>
+        <h3 class="title-subtext">This web application provides information surrounding a variety of topics within the course. Click the link below
+            to discover all that this course has to offer!</h3>
+        <p class="margin-above">
             <a class="btn btn-dark btn-lg" href="/topics/" role="button">Explore Topics  <i class="fas fa-angle-right"></i></a>
         </p>
+
+</div>
+    <div class="centered bottom">
+        <i class="fas fa-chevron-down fa-3x"></i>
     </div>
 </div>
+
+
+
+<div class="container about" id="about-me">
+<hr class="featurette-divider">
+<div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">About me.</h2>
+        <p class="lead">Hi! If you're seeing this right now, you're either evaluating this for extra credit or I did
+        a <em>really</em> good job putting this together. The time put into this extra credit project was borderline
+            unrealistic. 10/10 would not recommend. But, I do hope <em>someone</em> sees the value in this!</p>
+
+        <p><span class="text-muted">Before you think otherwise, please know I did not know html before doing this. Pls.</span></p>
+        <p><a class="text-muted" href="https://github.com/hrn4ch/cs3102-ec"><i class="fab fa-github"></i> Github</a></p>
+
+      </div>
+      <div class="col-md-5">
+          <h2 class="text-muted">Credits.</h2>
+          <p><i class="fab fa-bootstrap"></i> Bootstrap</p>
+          <p><i class="fab fa-font-awesome"></i> Font Awesome</p>
+          <p><i class="fas fa-cloud"></i> Heroku</p>
+      </div>
+</div>
+<hr class="featurette-divider">
+</div>
 </main>
+<footer class="bd-footer text-muted">
+    <div class="container-fluid p-3 p-md-5">
+    <p class="text-muted"><i class="far fa-copyright"></i> Hana Nur, 2019</p>
+    </div>
+    </footer>
 </body>
 </html>

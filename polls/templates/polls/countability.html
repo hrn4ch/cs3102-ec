@@ -5,6 +5,8 @@
 {% load static %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <style>
 #navbar-scrollspy {
@@ -24,6 +26,17 @@ body {
 .equation {
     text-align: center;
 }
+.featurette-divider {
+  margin: 5rem 0;
+}
+.centered {
+    align-content: center;
+    text-align: center;
+}
+.margin-top-bottom {
+    margin-top: 20px;
+}
+
 </style>
     <meta charset="UTF-8">
     <title>Countability Theory</title>
@@ -124,6 +137,10 @@ body {
         </ul>
     </p>
 
+    <blockquote class="blockquote">
+        <p class="mb-0"><mark>The union of countably many countable sets is countable.</mark></p>
+    </blockquote>
+
   <h5 id="item-1-2">Why Is It Important To Know If A Set Is Countable?</h5>
 
 
@@ -135,6 +152,8 @@ body {
       Therefore, for us to code and use deciders within computer science, we have to be able to determine whether the
       acceptable items would be countable. Now, let’s look into how we determine whether or not a set is countable.
   </p>
+
+    <hr class="featurette-divider">
 
   <h3 id="item-2">Methods For Determining Countability</h3>
   <p>If a set is known to be finite, we can conclude that it is a countable set. When a set is infinite, however, this
@@ -152,6 +171,7 @@ body {
     </ul>
 </p>
 
+
   <h5 id="item-2-1">Finding A Bijection With The Natural Numbers</h5>
     <p>Finding a bijection is not always easy. Sometimes it is obvious, and sometimes it can be way more complicated.
     The goal of finding a bijection is making sure everything in the natural numbers can map both to and from an
@@ -160,18 +180,68 @@ body {
     have the set of rational numbers, or the set of all possible strings over an alphabet, this is not the route you’d
     want to take.</p>
     <p>
-    <button button type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#evenNumbers"
-            aria-expanded="true" aria-controls="evenNumbers">Find A Function</button></p>
+    <button type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#evenNumbers"
+            aria-expanded="false" aria-controls="evenNumbers">Find A Function</button></p>
 <div class="row">
 <div class="collapse" id="evenNumbers">
   <div class="card card-body">
-<p> If <var>S</var> is the set of even natural numbers, then: </p>
+    <p> If <var>S</var> is the set of even natural numbers, then: </p>
     <p class="text-center"><var>f</var> : <var>&#8469</var> <i class="fas fa-arrows-alt-h"></i> <var>S</var></p>
   </div>
 </div>
 </div>
+
+<p>Overall, if the infinite set you’re looking at <em>seems</em> like there might be an obvious function that can map
+    between them, that is a definitive, acceptable proof of countability. If the set is more complicated, you might
+    need to look into <mark>dovetailing</mark>.</p>
+
+<p>Dovetailing is how you represent a bijection between a set and the natural numbers without actually having to know
+    what that function is. With dovetailing, you can show that there exists a function that would be able to map any
+    of the values in that set to the natural numbers by giving each cross-section an index.</p>
+<div class="row">
+<p class="centered"><img src="https://www.homeschoolmath.net/teaching/images/rationals-countable.gif"
+    class="rounded float-right" alt="Dovetail To Count Rational Numbers">
+</p>
+   <p><small>Source: https://www.homeschoolmath.net/teaching/images/rationals-countable.gif</small></p>
+</div>
+
+<p>The image above is an example of dovetailing. The natural numbers line the top row towards infinity and line the
+    first column towards infinity. From here, the row number is the denominator while the column number is the
+    numerator. The image shows arrows following a particular pattern that, if you index each value as you go, allows
+    you to list the set of all rational numbers. There are a few key things to note regarding this instance of dovetailing:
+    <ul class="list-unstyled">
+        <li>1. Zero is not represented in the set</li>
+        <li>2. There are duplicates</li>
+    </ul>
+    To address the first issue, we can just assume the first rational number to be counted will be 0. Second, the bijective
+    function represented by the dovetail is unknown, but if we state that the function is the result of the dovetail after
+     having removed all duplicates, this issue is avoided.
+</p>
+
   <h5 id="item-2-2">Diagonalization</h5>
-  <p>...</p>
+  <p>Now that we know how to prove if a set is countable, we should learn how to prove the opposite. If a set is uncountable
+   it must also be true that I cannot list all values in the set infinitely, like we did for the first row and column of
+   the dovetail. Now, to prove through diagonalization that a set isn't countable, we'll assume towards reaching a
+  contradiction that it <em>is</em> countable and we can list all values in the set. For example, imagine we can find
+   a bijection between the natural numbers and all real numbers that allows us to list the real numbers as such:</p>
+
+    <div class="row">
+<p class="centered"><img src="https://em.wattpad.com/190fa5637543aa3dc86443ef6150de76c1a497b8/68747470733a2f2f73332e616d
+617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f6c69525654346f506139726a33673d
+3d2d3332323739343737372e313437646539373465376233393261363739343634303133333231392e6a7067?s=fit&w=720&h=720"
+    class="rounded float-right" alt="Diagonalization" style="width:350px;height:500px;align-content:center;">
+</p>
+   <p><small>Source: http://steve-patterson.com/wp-content/uploads/2016/07/CantorDiagonalArgument.png</small></p>
+</div>
+ <p>
+     No matter how hard we try to list all real numbers, there will always be a number that we did not account for.
+     Therefore, if I form a number by taking the first digit from the first number and adding one, and taking the second
+     digit of the second number and adding one, and so on, I am able to form a number, <var>x</var>, which I could not
+     have listed. There will always be a digit in <var>x</var> that is different from the one of the digits in the list
+     all real numbers we made, meaning we couldn't have listed all real numbers. Therefore, we've reached a contradiction,
+      and all real numbers are <em>not</em> countable.
+ </p>
+        <hr class="featurette-divider">
 
   <h3 id="item-3">Practice Problems</h3>
 
@@ -180,5 +250,10 @@ body {
 
 
 </main>
+<footer class="bd-footer text-muted">
+    <div class="container-fluid p-3 p-md-5">
+    <p class="text-muted"><i class="far fa-copyright"></i> Hana Nur, 2019</p>
+    </div>
+    </footer>
 </body>
 </html>
