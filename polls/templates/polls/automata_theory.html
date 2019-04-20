@@ -3,7 +3,10 @@
 <head>
 
 {% load static %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <style>
 #navbar-scrollspy {
@@ -19,6 +22,16 @@
 }
 body {
     background-color: #F8F9FB;
+}
+.featurette-divider {
+  margin: 5rem 0;
+}
+.centered {
+    align-content: center;
+    text-align: center;
+}
+.margin-top-bottom {
+    margin-top: 20px;
 }
 </style>
     <meta charset="UTF-8">
@@ -43,23 +56,25 @@ body {
     </nav>
     <a class="nav-link" href="#item-2">2. Regularity</a>
     <nav class="nav nav-pills flex-column">
-      <a class="nav-link ml-3 my-1" href="#item-2-1">2-1. RegEx</a>
+      <a class="nav-link ml-3 my-1" href="#item-2-1">2-1. Pumping Lemma</a>
     </nav>
     <a class="nav-link" href="#item-3">3. Pushdown Automaton</a>
     <nav class="nav nav-pills flex-column">
-      <a class="nav-link ml-3 my-1" href="#item-3-1">3-1. Stacks + NFAs</a>
-      <a class="nav-link ml-3 my-1" href="#item-3-2">3-2. Context-Freeness</a>
+      <a class="nav-link ml-3 my-1" href="#item-3-1">3-1. Context-Freeness</a>
+      <a class="nav-link ml-3 my-1" href="#item-3-2">3-2. Context-Free Grammar</a>
     </nav>
   </nav>
 </nav>
 </div>
 
 <div id="text-content" class="col-5">
-<div data-spy="scroll" data-target="#navbar-scrollspy" data-offset="1000">
+<p data-spy="scroll" data-target="#navbar-scrollspy" data-offset="1000">
 
 <div class="container">
       <h1>Finite State Automatons (FSAs)</h1>
 </div>
+            <hr class="featurette-divider">
+
   <h3 id="item-1">Introduction to FSAs</h3>
 
   <p>
@@ -74,9 +89,10 @@ body {
          FSAs to determine whether or not strings are accepted into languages.
     </p>
     <p>
-        FSAs read strings character by character, and each character puts the automaton into a new state. State
-        transition rules depend only on current state and currently-read characters, so you can't look back at previous
-        characters or states, and there are a finite number of states (hence the name FSA).
+        FSAs read strings character by character, and each character puts the automaton into a new state. There is one
+        initial state and any number of final states. State transition rules depend only on current state and
+        currently-read characters, so you can't look back at previous characters or states, and there are a finite
+        number of states (hence the name FSA).
     </p>
 
 
@@ -86,8 +102,46 @@ body {
     <li>1. Each state must have a transition for every possible inputted character</li>
     <li>2. The FSA can only be in one state at a time</li>
 </ul>
-    To be <mark>closed</mark> under a property means that applying this property to a member of a set returns another
-    member of the set. DFAs are closed under many different properties:
+  </p>
+
+
+  <h5 id="item-1-2">Nondeterministic Finite Automatons (NFAs)</h5>
+
+    <p><mark>Nondeterminism</mark> occurs when the an FSA can try multiple paths or be in multiple states at once. NFAs
+    have more relaxed restrictions than DFAs:
+    <ul>
+    <li>We can now make multiple transitions without passing a character using <mark>epsilon transitions</mark></li>
+    <li>Characters do not need a transition</li>
+</ul></p>
+    <p class="font-weight-bold">Two important things to understand:
+    <ul class="list-unstyled" style="margin-left: 20px;">
+    <li>1. If no transition is defined for that input, the NFA rejects.</li>
+    <li>2. If any of the states the NFA is in is an accepting state, the NFA accepts.</li>
+    </ul>
+    </p>
+
+
+    <p>If NFAs have less restrictions are they more <em>powerful</em> than DFAs? Not exactly.</p>
+  <h5 id="item-1-3">NFA to DFA Conversion</h5>
+    <p>Any and every NFA can be converted into a DFA through <mark>Powerset Construction</mark>. Through Powerset
+        Construction, we make a new DFA whose states represent a subset of states from the original machine. Therefore,
+    because you can convert any NFA into a DFA, and because DFAs are simply NFAs with regulations, the power of DFAs and
+        NFAs are essentially equivalent.</p>
+
+    <hr class="featurette-divider">
+
+  <h3 id="item-2">Regular Languages</h3>
+  <p>
+      The set of all languages decided by some FSA is called the <mark>Regular languages</mark>. All regular languages
+      can be represented by some DFA or regular expression. We can make a DFA that accepts all strings in any finite
+      language, because no matter how un-related the strings are, we could essentially union individual DFAs for each
+      string in the language. Therefore, all finite languages are regular. However, when languages include a countably
+      infinite number of strings (which we know are countable because all languages are subsets of the countable sigma
+      star), how do we determine whether or not the language is regular?
+  </p>
+    <p>
+        To be <mark>closed</mark> under a property means that applying this property to a member of a set returns another
+        member of the set. Regular languages are closed under many different properties:
     <ul>
         <li><strong>Complement</strong>: FSA that accepts all strings <em>not</em> in the language</li>
         <li><strong>Intersection</strong>: Intersection of 2 FSAs accepts only members in both sets</li>
@@ -98,41 +152,170 @@ body {
             string from the second set</li>
         <li><strong>Reversal</strong>: FSA that accepts all strings from the language with characters in the reverse
              order</li>
+        <li><strong>Kleene Star</strong>: FSA for the language concatenated with itself 0 or more times</li>
+
+    </ul>
+    </p>
+
+  <h5 id="item-2-1">Pumping Lemma</h5>
+    <p>
+        We only know if a language is regular if there is a regular expression or DFA for the language or if the language
+        is finite. For countably infinite languages, we can only prove that a language is <strong>not</strong> regular
+         through the <mark>Pumping Lemma</mark>.
+    </p>
+        <div class="row">
+            <p class="centered"><img src="https://www.neuraldump.net/wp-content/uploads/2017/12/pumping_lemma.png"
+            class="rounded float-right" alt="Pumping Lemma">
+            </p>
+           <p><small>Source: https://www.neuraldump.net/wp-content/uploads/2017/12/pumping_lemma.png</small></p>
+        </div>
+    <p>
+        If a language is countably infinite and regular, it has a DFA with a finite number of states. That means that
+        there must be <em>some</em> string in the language that is longer than the number of states there are.
+        Because the string would be longer than the number of states, there must be some loop in the DFA. The pumping
+        lemma aims to show there is no possible loop in the DFA, thus proving the language could not have any DFA.
+    </p>
+    <p>
+        In the image above, the loop can be seen as the <var>y</var> portion of the DFA. The <var>x</var> and
+        <var>z</var> portions are not necessary and could be replaced with epsilon transitions. To disprove a language
+        is regular, we will use an indirect proof. If language <var>L</var> were a regular language, then there is a
+        number <var>p</var> &isin; &#8469 such that for any string <var>s</var> &isin; <var>L</var> where
+        |<var>s</var>| <i class="fas fa-greater-than"></i> <var>p</var> we can find the coordinating <var>x</var>,
+        <var>y</var>, and <var>z</var> as in the image above.
+    </p>
+
+    <div class="alert alert-primary" role="alert">
+        TL;DR: You basically assume you have a string <var>s</var> that's long enough for the string to loop
+        again through the states. Okay, moving on!
+    </div>
+
+    <p>
+        <strong>If the above is true, it must also be true that:</strong>
+        <ul class="list-unstyled" style="margin-left: 20px;">
+            <li>1. For each <var>i</var> <i class="fas fa-greater-than"></i> 0, <var>xy<sup>i</sup>z</var> &isin; <var>L</var></li>
+            <li>2. |<var>y</var>| <i class="fas fa-greater-than"></i> 0</li>
+            <li>3. |<var>xy</var>| <i class="fas fa-less-than-equal"></i> <var>p</var></li>
+        </ul>
+        If you find a long string within the language that breaks any of the above rules, the language is not regular.
+    </p>
+    <p>
+        Some languages are intuitively irregular, such as the language of strings of the form <var>a<sup>n</sup>b<sup>n</sup></var>,
+        where <var>n</var> &isin; &#8469. This is because in order to determine if the number of <var>b</var>'s match
+        the number of <var>a</var>'s, you'd need some memory to store the <var>n</var> value. Because DFAs cannot use
+        memory, this language is irregular. However, this is not a legitimate proof, so we'd still have to use the
+        pumping lemma to show this.
+    </p>
+    <p>
+        To prove the language <var>a<sup>n</sup>b<sup>n</sup></var> is irregular, let's consider all possible <var>y</var>
+        portions for the string <var>a<sup>p</sup>b<sup>p</sup></var>. We can use this string from the language because
+        we know it should loop somewhere as there are more than <var>p</var> letters. For this string, the repeating
+        <var>y</var> portion could be the <var>a</var>'s in the beginning, the <var>a</var>'s and <var>b</var>'s in the
+        middle, or the <var>b</var>'s at the end.
+    </p>
+
+    <dl class="row">
+  <dt class="col-sm-3"><var>a</var>'s in the beginning</dt>
+  <dd class="col-sm-9">
+      This portion of the string could not repeat, because if the <var>a</var>'s in the beginning repeat once, there would
+      be more <var>a</var>'s than <var>b</var>'s, which would result in a string not in <var>a<sup>n</sup>b<sup>n</sup></var>.
+      This breaks rule 1, which means this cannot be the repeating portion.
+  </dd>
+  <dt class="col-sm-3"><var>a</var>'s and <var>b</var>'s in the middle</dt>
+  <dd class="col-sm-9">
+      This portion of the string could not repeat, because if the <var>a</var>'s and <var>b</var>'s repeat once, there would
+      be and <var>a</var> after a <var>b</var>, which would result in a string not in <var>a<sup>n</sup>b<sup>n</sup></var>.
+      This breaks rule 1, which means this cannot be the repeating portion.
+  </dd>
+  <dt class="col-sm-3"><var>b</var>'s at the end</dt>
+  <dd class="col-sm-9">
+      This portion of the string could not repeat, because if the <var>b</var>'s at the end repeat once, there would
+      be more <var>b</var>'s than <var>a</var>'s, which would result in a string not in <var>a<sup>n</sup>b<sup>n</sup></var>.
+      This breaks rule 1, which means this cannot be the repeating portion.
+  </dd>
+    </dl>
+
+    <p>Now that we've shown that no possible part of the string could repeat, or be "pumped", we can conclude that there
+     must not be a DFA for this language, proving it is irregular.</p>
+
+    <p>Not too bad right? Now that we know that there are some languages that require memory to be described with
+    automata, let's move onto more powerful finite state automatons.</p>
+
+    <hr class="featurette-divider">
+
+  <h3 id="item-3">Pushdown Automatons (PDAs)</h3>
+      <p><mark>PDAs</mark> are FSAs with an unbounded stack. This stack has an alphabet that is separate from the
+      language's alphabet, which can be used as start symbols, stop symbols, etc. for the stack. PDAs are typically
+      non-deterministic, which means they can be in different states with different stacks at the same time.
+      </p>
+
+    <p>
+        PDAs only accept when the entire input has been read and at least one path is in an accepting state with an empty
+         stack. Because PDAs have the power of an NFA with the addition of an unbounded stack, PDAs are more powerful
+        than NFAs. Because all NFAs are essentially PDAs that do not use their stacks, all regular languages have a PDA.
+        How do we classify the set of languages that have PDAs?
+    </p>
+
+  <h5 id="item-3-1">Context-Freeness</h5>
+  <p><mark>Context-Free Languages</mark> are languages that have a PDA. All regular languages have an NFA, and by
+      extension a PDA, so all regular languages are also context-free. Because the stack in unbounded and grows in one
+      direction, we can claim that all context-free languages can be decided by a computer with linear memory (memory
+      that is relative to the length of the string).
+  </p>
+    <p>
+      Context-free languages are closed under many different properties:
+    <ul>
+        <li><strong>Kleene Star</strong></li>
+        <li><strong>Intersection with regular languages</strong>: No conflicting stacks</li>
+        <li><strong>Union</strong>: Epsilon transition to start states</li>
+        <li><strong>Concatenation</strong>: Epsilon transition from final of one PDA to start state of the other</li>
+</ul>
+</p>
+    <p>
+     Context-free languages are also <em>not</em> closed under others:
+    <ul>
+        <li><strong>Intersection with CFLs</strong>: Which stack do you take?</li>
+        <li><strong>Complement</strong>: FSA that accepts all strings <em>not</em> in the language</li>
 
     </ul>
   </p>
 
+  <h5 id="item-3-2">Context Free Grammar</h5>
+  <p>Another way to describe a context-free language is through a <mark>Context-Free Grammar</mark>. A context free grammar
+   is essentially a set of substitution rules you can apply to generate strings. CFGs are formed by a start character and
+      terminal characters that cannot be substituted and non-terminal characters that can be substituted. To make a string
+  you begin at the start symbol and make substitutions until you have only terminal characters. For example:</p>
 
-  <h5 id="item-1-2">Nondeterministic Finite Automaton</h5>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <h5 id="item-1-3">NFA to DFA Conversion</h5>
-  <p>...</p>
+    <p class="centered">
+        <var>S</var> <i class="fas fa-long-arrow-alt-right"></i> ( <var>S</var> ) | <var>x</var> | &epsilon;
+    </p>
 
-  <h3 id="item-2">Regular Languages</h3>
-  <p>
-      The set of all languages decided by some FSA is called the Regular languages.
-  </p>
-
-  <h5 id="item-2-1">Regular Expressions</h5>
-
-
-  <h3 id="item-3">Pushdown Automaton</h3>
-      <p>...</p>
-
-  <h5 id="item-3-1">Stack + NFAs</h5>
-  <p>...</p>
-
-  <h5 id="item-3-2">Context Freeness</h5>
-  <p>...</p>
+    <p>
+        With this CFG, I have represented parentheses matching. The parentheses, <var>x</var>, and &epsilon; are the
+        terminal characters, while the start symbol, <var>S</var> is the only non-terminal character.
+    </p>
+        <div class="row">
+            <p class="centered"><img src="https://www.tutorialspoint.com/automata_theory/images/yield_of_a_tree.jpg"
+            class="rounded float-right" alt="Pumping Lemma">
+            </p>
+           <p><small>Source: https://www.tutorialspoint.com/automata_theory/images/yield_of_a_tree.jpg</small></p>
+        </div>
+    <p>
+        Above is a parse tree for the string "abaabb" from the language:
+        <p class="centered"><var>S</var> <i class="fas fa-long-arrow-alt-right"></i> <var>SS</var> | <var>aSb</var> | &epsilon;</p>
+        Some CFGs are <mark>ambiguous</mark>, meaning multiple parse trees can be created for the same string. Determining
+        whether or not a CFG is ambiguous is not computable.
+    </p>
+        <hr class="featurette-divider">
 
 </div>
 </div>
 
 
 </main>
+<footer class="bd-footer text-muted">
+    <div class="container-fluid p-3 p-md-5">
+    <p class="text-muted"><i class="far fa-copyright"></i> Hana Nur, 2019</p>
+    </div>
+</footer>
 </body>
 </html>

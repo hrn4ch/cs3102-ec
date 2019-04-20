@@ -5,10 +5,10 @@ class TopicAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['title']}),
         (None, {'fields': ['desc']}),
-        (None, {'fields': ['image']}),
+        (None, {'fields': ['imageURL']}),
         (None, {'fields': ['postURL']}),
     ]
-    list_display = ('title', 'desc', 'image', 'postURL')
+    list_display = ('title', 'desc', 'imageURL', 'postURL')
     search_fields = ['title']
 
 admin.site.register(Topic, TopicAdmin)

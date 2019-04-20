@@ -3,7 +3,10 @@
 <head>
 
 {% load static %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <style>
 #navbar-scrollspy {
@@ -20,6 +23,19 @@
 body {
     background-color: #F8F9FB;
 }
+.equation {
+    text-align: center;
+}
+.featurette-divider {
+  margin: 5rem 0;
+}
+.centered {
+    align-content: center;
+    text-align: center;
+}
+.margin-top-bottom {
+    margin-top: 20px;
+}
 </style>
     <meta charset="UTF-8">
     <title>Computability Theory</title>
@@ -35,76 +51,200 @@ body {
 <div class="col-4 sidenav">
     <nav id="navbar-scrollspy" class="navbar navbar-light bg-light">
   <nav class="nav nav-pills flex-column">
-    <a class="nav-link" href="#item-1">1. Introduction</a>
+    <a class="nav-link" href="#item-1">1. Introduction to Computability</a>
     <nav class="nav nav-pills flex-column">
-      <a class="nav-link ml-3 my-1" href="#item-1-1">1-1. What does it mean to be countable?</a>
-      <a class="nav-link ml-3 my-1" href="#item-1-2">1-2. Why is this important?</a>
+      <a class="nav-link ml-3 my-1" href="#item-1-1">1-1. History</a>
+      <a class="nav-link ml-3 my-1" href="#item-1-2">1-2. Universal Machine</a>
     </nav>
-    <a class="nav-link" href="#item-2">2. Methods</a>
+    <a class="nav-link" href="#item-2">2. Turing Machines</a>
     <nav class="nav nav-pills flex-column">
-      <a class="nav-link ml-3 my-1" href="#item-2-1">2-1. Finding a bijection</a>
-      <a class="nav-link ml-3 my-1" href="#item-2-2">2-2. Diagonalization</a>
+      <a class="nav-link ml-3 my-1" href="#item-2-1">2-1. Reduction</a>
+      <a class="nav-link ml-3 my-1" href="#item-2-2">2-2. The Halting Problem</a>
     </nav>
-    <a class="nav-link" href="#item-3">3. Practice</a>
+    <a class="nav-link" href="#item-3">3. Conclusion</a>
   </nav>
 </nav>
 </div>
 
 <div id="text-content" class="col-5">
-<div data-spy="scroll" data-target="#navbar-scrollspy" data-offset="0">
+<p data-spy="scroll" data-target="#navbar-scrollspy" data-offset="0">
 
 <div class="container">
       <h1>Computability</h1>
 </div>
-  <h3 id="item-1">Introduction</h3>
+            <hr class="featurette-divider">
+
+  <h3 id="item-1">Introduction to Computability</h3>
   <p>
-      Many things are important about this ...
-
+      Regular languages are computable, as are context-free languages (both of which you can learn more about
+      <a href="/topics/Automaton%20Theory/">Here</a>). But what exactly does it mean to be computable?
   </p>
-  <h5 id="item-1-1">What Does It Mean For A Set To Be Countable?</h5>
-  <p>A set is countable if:
-        <ul>
-        <li>It is finite</li>
-        <li>It has a bijection with the natural numbers (that means it is countably infinite)</li>
-        <li>It is a subset of a countable set</li>
-        </ul>
+  <h5 id="item-1-1">History</h5>
+    <p>
+        David Hilbert created the <mark>Enscheidungsproblem</mark> (or the deciding problem) and Alan Turing and Alfonzo Church made the
+        Church-Turing thesism which was an answer to this problem. The Enscheidungsproblem is essentially asking the following:
     </p>
-      <p>A bijection is when there exists a function for two sets, <var>f</var> and <var>g</var> such that:</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
+    <blockquote class="blockquote">
+        <p class="mb-0">Is there a decider that takes a written statement in formal logic as input and returns a "yes" or
+            "no" that is always accurate?</p>
+    </blockquote>
+
+    <p>
+        Alfonzo Church created a system of mathematical expressions called <mark>Lambda Calculus</mark> which was capable of representing
+        any computation. Church proved using lambda calulus that no such universe or solution could exist. Alan Turing showed that
+        first-order logic is not decidable instead by developing a mathematical model of computation called the
+        <mark>Turing Machine</mark>. Turing machines are functionally equivalent to lambda calculus in terms of computation.
+    </p>
+
+  <h5 id="item-1-2">Universal Machine</h5>
+  <p>
+      Turing machines are "universal" because one Turing machine can simulate all other Turing machines. Because Turing
+      machines are models for computers, we can simulate any other machine on one Turing machine. Think of the Turing
+      machine as the CPU and the lambda calculus as the programming language: with these two alone we can write algorithms
+       to compute anything. The equivalence of lambda calculus and the Turing machine shows that anything we can do in
+      software we can also do in hardware.
+  </p>
+
+            <hr class="featurette-divider">
 
 
-  <h5 id="item-1-2">Why Is It Important To Know If A Set Is Countable?</h5>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
+  <h3 id="item-2">Turing Machines</h3>
+  <p>
+      Alan Turing created the Turing machine to model computation, but is there anything we can compute that Turing machines
+      cannot? According to the Church-Turing thesis: no! Turing machines can compute anything that human beings are capable
+       of computing. This makes sense because human brains are finite, and the process of manually doing the work on scratch
+       paper is equivalent to a finite state Turing machine writing on tape!
 
-  <h3 id="item-2">Methods For Determining Countability</h3>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
+      <p>What components are Turing machines composed of?
+        <ul>
+            <li><strong>A finite number of states:</strong> for example, even and odd</li>
+            <li><strong>Semi-infinite tape:</strong> serves as memory and has it's own alphabet</li>
+            <li><strong>Transition using input:</strong> character, state, and "current symbol" on tape</li>
+            <li><strong>Can write, read, and move left/right:</strong> Can overwrite tape cells based on state and what
+            was read</li>
+        </ul>
+      </p>
+  </p>
+    <p>
+        Turing machine configurations (states in FSAs) are determined by where the read head is, what the state of the machine is, and
+        what is on the tape. Transition inputs are what is read on current tape cell and what is the current state of the
+        machine. After transitioning, the machine has either moved left or right by one, and now the current tape cell and
+        potentially the state if it changed upon transition are different.
+    </p>
+    <p>
+        For a Turing machine to accept or reject, we must be in the accept or reject state. The results of a Turing machine
+        are Accept and Halt, Reject and Halt, or simply run forever. Running forever is an implicit rejection, and is used
+        often for OSs, browsers, etc.
+    </p>
+    <p>
+        There is a difference between languages that are "Turing-recognizable" and "Turing-decidable". <mark>Decidable languages</mark>
+        are those that have a Turing machine, <var>TM<sub>1</sub></var>, where all strings in the language either accept or reject.
+        The rejecting of these strings <strong><em>cannot</em></strong> be implicit, and the machine must halt on every
+        input. <mark>Turing-recognizable languages</mark> are those that also have a Turing machine, <var>TM<sub>2</sub></var>, where all
+        strings in the language either accept or reject. The rejecting of these strings <strong><em>can</em></strong> be
+        implicit. Turing-recognizable languages are allowed to run forever on an input.
+    </p>
+    <p>
+        An example of an undecidable language would be the language determined by the <mark>Acceptance Problem</mark>. This
+        problem asks if it is possible to determine if a string, <var>w</var>, is accepted or rejected by a given turing
+        machine description, <var>M</var> (which includes a program, it's transitions, states, etc). This problem is not
+        decidable because if I were to assume towards reaching a contradiction that I had a machine, <var>D</var> that
+        does the opposite of what <var>M</var> does, it would be impossible to accurately produce an answer. If <var>M</var>
+        returns that the language accepted the string, then <var>D</var> rejects the string, proving <var>M</var> to be
+        incorrect. This contradiction means that the language cannot be decidable.
+    </p>
+    <p>
+        Decidable languages are closed under the following:
+        <ul>
+            <li>Union</li>
+            <li>Intersection</li>
+            <li>Complement</li>
+            <li>Reversal</li>
+            <li>Lowkey everything</li>
+        </ul>
 
-  <h5 id="item-2-1">Finding A Bijection With The Natural Numbers</h5>
-  <p>...</p>
-      <p>...</p>
-  <p>...</p>
-  <p>...</p>
-  <p>...</p>
+        To determine if a language is decidable, we can show it's Turing machine. How do we prove a language is not decidable?
+    </p>
 
-  <h5 id="item-2-2">Diagonalization</h5>
-  <p>...</p>
+  <h5 id="item-2-1">Reduction</h5>
+  <p>
+      To prove a language is undecidable, we use reduction. <mark>Proof by reduction</mark> is used to show how different
+      problems relate to each other.
+  </p>
+    <div class="alert alert-primary" style="text-align: center;" role="alert">
+    <p class="lead" style="text-align: center;">
+        Problem A <i class="fas fa-angle-double-right"></i> <strong>reduces to</strong> <i class="fas fa-angle-double-right"></i> Problem B
+    </p>
 
-  <h3 id="item-3">Practice Problems</h3>
+    <p class="lead" style="text-align: center;">
+        Solution B <i class="fas fa-angle-double-right"></i> <strong>can be used to make</strong> <i class="fas fa-angle-double-right"></i> Soluton A
+    </p>
+        <p>
+            <lighter>Problem A is not a harder than Problem B</lighter>
+        </p>
+    </div>
+
+    <p>
+        We can prove Problem B is impossible if we know Solution A is impossible. Assume Solution B is possible and then
+        show how you can use Solution B to perform Solution A. Solution A is impossible, so this leads to a contradiction.
+        However, Solution B is only one way to find Solution B, so there may be faster ways. Therefore, Problem A may be
+        easier than Problem B.
+    </p>
+
+  <h5 id="item-2-2">The Halting Problem</h5>
+  <p>
+      The halting problem is such:
+  </p>
+    <p class="lead">Is there a decider that can determine whether or not a given Turing machine description and the input
+    from it's tape will halt or run forever?</p>
+    <div class="row">
+            <p class="centered"><img src="https://www.tutorialspoint.com/automata_theory/images/halting_machine.jpg"
+            class="rounded float-right" alt="Halting Machine">
+            </p>
+           <p><small>Source: https://www.tutorialspoint.com/automata_theory/images/halting_machine.jpg</small></p>
+    </div>
+    <p>
+        Imagine the machine above, <var>HM</var> was capable of doing just that: returning whether or not a machine halted. Now, lets use
+        this machine to be the basis for another machine, <var>HM'</var>:
+    </p>
+    <div class="row">
+            <p class="centered"><img src="https://www.tutorialspoint.com/automata_theory/images/inverted_halting_machine.jpg"
+            class="rounded float-right" alt="Halting Machine">
+            </p>
+           <p><small>Source: https://www.tutorialspoint.com/automata_theory/images/inverted_halting_machine.jpg</small></p>
+    </div>
+    <p>
+        Machine <var>HM'</var> will take the output of machine <var>HM</var> and run forever if <var>HM</var> returned that
+        it would halt. If <var>HM</var> ran forever, <var>HM'</var> would halt on that input. If I were to pass <var>HM'</var>
+        to itself as both the input and Turing machine description, the machine would not be able to work. If the
+        <var>HM'</var> halts, then <var>HM'</var> would enter an infinite loop and not halt. If <var>HM'</var> doesn't halt,
+        then <var>HM'</var> returns "No" and halts. This contradiction is a paradox, thus proving there is no possible machine
+        for this language and it is undecidable.
+    </p>
+
+          <hr class="featurette-divider">
+
+    <h3 id="item-3">Conclusion</h3>
+
+    <p>
+        Alan Turing and Alfonzo Church's discoveries, as well as those of the many others in this field, have allowed us
+        to further understand what it means for problems to be solvable or unsolvable. Because of their many contributions,
+        we are able to categorize these problems and develop a better understanding of all we can do with computing. These
+        questions form the basis for computational theory, and allows us to effectively find and develop solutions.
+    </p>
+
+              <hr class="featurette-divider">
 
 </div>
 </div>
 
 
 </main>
+<footer class="bd-footer text-muted">
+    <div class="container-fluid p-3 p-md-5">
+    <p class="text-muted"><i class="far fa-copyright"></i> Hana Nur, 2019</p>
+    </div>
+</footer>
+
 </body>
 </html>
