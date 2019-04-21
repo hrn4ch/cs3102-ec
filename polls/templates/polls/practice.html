@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+{% load static %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<style>
+#navbar-scrollspy {
+    justify-content: left;
+}
+
+#text-content {
+    justify-content: left;
+    margin-left: 35%;
+}
+.sidenav {
+    position: fixed;
+}
+body {
+    background-color: #F8F9FB;
+}
+.equation {
+    text-align: center;
+}
+.featurette-divider {
+  margin: 5rem 0;
+}
+.centered {
+    align-content: center;
+    text-align: center;
+}
+.margin-top-bottom {
+    margin-top: 20px;
+}
+span[role="button"] {
+    cursor: pointer;
+}
+
+</style>
+    <meta charset="UTF-8">
+    <title>Practice</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light sticky-top">
+        <a class="navbar-brand" href="/">UVA CS3102</a>
+    <a class="nav-link " href="/topics/">Topics</a>
+        <a class="nav-link " href="{% url 'polls:practice' %}">Practice</a>
+</nav>
+<p role="main">
+
+<div class="col-4 sidenav">
+    <nav id="navbar-scrollspy" class="navbar navbar-light bg-light">
+  <nav class="nav nav-pills flex-column">
+    <a class="nav-link" href="#item-1">1. Automatons</a>
+    <nav class="nav nav-pills flex-column">
+      <a class="nav-link ml-3 my-1" href="#item-1-1">1-1. DFA and NFA</a>
+      <a class="nav-link ml-3 my-1" href="#item-1-2">1-2. PDA and CFG</a>
+    </nav>
+    <a class="nav-link" href="#item-2">2. Can you count em?</a>
+  </nav>
+</nav>
+</div>
+<div id="text-content" class="col-5">
+<div data-spy="scroll" data-target="#navbar-scrollspy" data-offset="0">
+
+<div class="container">
+      <h1>Practice What You've Learned!</h1>
+</div>
+    <hr class="featurette-divider">
+    <h4 style="font-weight: 300">
+        The following questions are a series of questions you can use to practice! Draw the FSAs and write the proofs to
+         defend your logic. You will only get out of these questions what you put in, so try your hardest!
+    </h4>
+    <p>
+        Click on the questions once you have answered them to see the correct response. There may be more than one way to
+        prove the statements, but an example of what your solution may look like is provided.
+    </p>
+    <hr class="featurette-divider">
+
+  <h3 id="item-1">Automatons</h3>
+
+  <h5 id="item-1-1">DFAs and NFAs</h5>
+    <ul class="list-unstyled">
+        <p>With the alphabet {a, b}:</p>
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#evenB">1. Find an FSA for the language with an even number of b's</a></li>
+    <div class="collapse" id="evenB">
+        <div class="row">
+            <p class="centered"><img src="https://brasil.cel.agh.edu.pl/~11sustrojny/wp-content/uploads/2011/05/automat.jpg"
+                class="rounded float-right" alt="Even B's">
+            </p>
+               <p><small>Source: https://brasil.cel.agh.edu.pl/~11sustrojny/wp-content/uploads/2011/05/automat.jpg</small></p>
+        </div>
+    </div>
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#aba">2. Find an FSA for the regular expression a<sup>*</sup>ba<sup>*</sup></a></li>
+    <div class="collapse" id="aba">
+        <div class="row">
+            <p class="centered"><img src="http://www.asethome.org/fa/image002a.jpg"
+                class="rounded float-right" alt="Even B's" style="width:450px;height:300px;align-content:center;">
+            </p>
+               <p><small>Source: http://www.asethome.org/fa/image002a.jpg</small></p>
+        </div>
+    </div>
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#unionregex">3. Find an FSA for the union of the regular expressions:
+        abab &cup; a(ba)<sup>*</sup></a></li>
+    <div class="collapse" id="unionregex">
+        <div class="row">
+            <p class="centered"><img src="https://www.cs.wcupa.edu/rkline/assets/img/FCS/nfa3.png?1282781728"
+                class="rounded float-right" alt="Union" style="width:450px;height:300px;align-content:center;">
+            </p>
+               <p><small>Source: https://www.cs.wcupa.edu/rkline/assets/img/FCS/nfa3.png?1282781728</small></p>
+        </div>
+    </div>
+    </ul>
+
+
+  <h5 id="item-1-2">PDAs</h5>
+
+    <ul class="list-unstyled">
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#pda">1. Are PDAs more "powerful" than NFAs?</a></li>
+    <div class="collapse" id="pda">
+        <p>Because PDAs are NFAs with linear memory, the computing power of PDAs is greater than that of NFAs.</p>
+    </div>
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#pda2">2. Find a PDA that accepts palindromes,
+            <var>L={ww<sup>R</sup>| w = (a+b)<sup>*</sup>}</var></a></li>
+    <div class="collapse" id="pda2">
+        <div class="row">
+            <p class="centered"><img src="https://www.tutorialspoint.com/automata_theory/images/pda_for_l1.jpg"
+                class="rounded float-right" alt="Palindrome">
+            </p>
+               <p><small>Source: https://www.tutorialspoint.com/automata_theory/images/pda_for_l1.jpg</small></p>
+        </div>
+    </div>
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#pda3">3. Find a CFG for the regular expression 0<sup>n</sup>1<sup>n</sup></a></li>
+    <div class="collapse" id="pda3">
+        <p class="centered">
+            <var>S</var> <i class="fas fa-long-arrow-alt-right"></i> 0<var>S</var>1 | &epsilon;
+        </p>
+    </div>
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#pda4">4. Find a CFG for the regular expression a<sup>n</sup>b<sup>n</sup>c<sup>n</sup></a></li>
+    <div class="collapse" id="pda4">
+        <p class="centered">
+            Trick question! This is not possible because the language is not context-free and it has no PDA. Always check
+            if the language is context-free before jumping into finding a PDA or CFG!
+        </p>
+    </div>
+    </ul>
+
+
+  <h3 id="item-2">Can You Count Em?</h3>
+    <ul class="list-unstyled">
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#evenNumbers">1. Are the even numbers countable?</a></li>
+    <div class="collapse" id="evenNumbers">
+        <p class="text-center"> If <var>S</var> is the set of even natural numbers, then: </p>
+        <p class="text-center"><var>f</var> : <var>&#8469</var> <i class="fas fa-arrows-alt-h"></i> <var>S</var></p>
+        <p class="text-center"><var>f(x) = 2x</var></p>
+    </div>
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#oddNumbers">2. Are the odd numbers countable?</a></li>
+    <div class="collapse" id="oddNumbers">
+        <p class="text-center"> If <var>S</var> is the set of odd natural numbers, then: </p>
+        <p class="text-center"><var>f</var> : <var>&#8469</var> <i class="fas fa-arrows-alt-h"></i> <var>S</var></p>
+        <p class="text-center"><var>f(x) = 2x-1</var></p>
+    </div>
+    <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#integers">3. Are the integers countable?</a></li>
+        <div class="collapse" id="integers">
+        <p class="text-center"><var>f</var> : <var>&#8469</var> <i class="fas fa-arrows-alt-h"></i> &#8484;</p>
+                <p class="text-center">if even: <var>x/2</var></p>
+            <p class="text-center" style="margin-right: 200px;"><var>f(x) =       {        </var></p>
+                    <p class="text-center">else: <var>(x-1)/2  </var></p>
+        </div>
+        <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#rationals">4. Are the rationals countable?</a></li>
+        <div class="collapse" id="rationals">
+        <div class="row">
+            <p class="centered"><img src="https://www.homeschoolmath.net/teaching/images/rationals-countable.gif"
+                class="rounded float-right" alt="Dovetail To Count Rational Numbers">
+            </p>
+               <p><small>Source: https://www.homeschoolmath.net/teaching/images/rationals-countable.gif</small></p>
+        </div>
+            <p class="text-center">The rational numbers can be dovetailed to give each number an index, therefore the set is countable.</p>
+        </div>
+        <li><a class="nav-link text-dark" data-toggle="collapse" data-target="#setofalllang">5. Is the set of all languages countable?</a></li>
+        <div class="collapse" id="setofalllang">
+            <p>This can be proven using diagonalization. Assume towards reaching a contradiction that I have listed all languages. I can always
+                generate a language that I have not listed by doing the opposite for the <var>i</var>th string in the language
+                <var>L(i)</var>. That way no language listed is equivalent, and I have reached a contradiction. Therefore,
+            through diagonalization, the set of all languages is not countable.</p>
+        </div>
+    </ul>
+</div>
+
+</div>
+</div>
+
+
+</p>
+<footer class="bd-footer text-muted">
+    <div class="container-fluid p-3 p-md-5">
+    <p class="text-muted"><i class="far fa-copyright"></i> Hana Nur, 2019</p>
+    </div>
+    </footer>
+</body>
+</html>

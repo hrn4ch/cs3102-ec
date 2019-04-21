@@ -4,6 +4,7 @@
 
 {% load static %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -46,6 +47,8 @@ body {
 <nav class="navbar navbar-expand-md navbar-light sticky-top">
         <a class="navbar-brand" href="/">UVA CS3102</a>
     <a class="nav-link " href="/topics/">Topics</a>
+        <a class="nav-link " href="{% url 'polls:practice' %}">Practice</a>
+
 </nav>
 <p role="main">
 
@@ -181,17 +184,6 @@ body {
     to just say multiply each natural number by 2 and you’ll get something in the set of even numbers. However, if you
     have the set of rational numbers, or the set of all possible strings over an alphabet, this is not the route you’d
     want to take.</p>
-    <p>
-    <button type="button" class="btn btn-outline-dark" data-toggle="collapse" data-target="#evenNumbers"
-            aria-expanded="false" aria-controls="evenNumbers">Find A Function</button></p>
-<div class="row">
-<div class="collapse" id="evenNumbers">
-  <div class="card card-body">
-    <p> If <var>S</var> is the set of even natural numbers, then: </p>
-    <p class="text-center"><var>f</var> : <var>&#8469</var> <i class="fas fa-arrows-alt-h"></i> <var>S</var></p>
-  </div>
-</div>
-</div>
 
 <p>Overall, if the infinite set you’re looking at <em>seems</em> like there might be an obvious function that can map
     between them, that is a definitive, acceptable proof of countability. If the set is more complicated, you might
@@ -250,7 +242,7 @@ body {
 </div>
 
 
-</main>
+</p>
 <footer class="bd-footer text-muted">
     <div class="container-fluid p-3 p-md-5">
     <p class="text-muted"><i class="far fa-copyright"></i> Hana Nur, 2019</p>

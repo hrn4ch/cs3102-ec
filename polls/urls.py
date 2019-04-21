@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^$', views.LoginView.as_view(), name='homepage'),
     url(r'^topics/$', views.list_topics, name="topics"),
     url(r'^topics/(?P<topic_title>.+)/$', views.post_topic, name="post"),
+    url(r'^practice/$', views.practice, name="practice"),
 ]
